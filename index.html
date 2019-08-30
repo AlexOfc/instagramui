@@ -350,7 +350,7 @@
                 <gwd-taparea id="gwd-taparea_1" class="gwd-taparea-1p7a">
                   <gwd-image source="ferd.jpg" alt="" id="p1"></gwd-image>
                   <svg viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="20"></circle>
+                    <circle cx="50" cy="50" r="40"></circle>
                   </svg>
                   <div class="story-user">Fred</div>
                 </gwd-taparea>
@@ -460,7 +460,7 @@
       }
       var yUp = evt.originalEvent.touches[0].clientY;
       var yDiff = yDown - yUp;
-      if (yDiff > 100) {
+      if (yDiff > 210) {
         movingTop = true;
         /* up swipe */
       } else {
@@ -512,7 +512,7 @@
         var pWidth = $(this).innerWidth(); //use .outerWidth() if you want borders
         var pOffset = $(this).offset();
         var x = e.pageX - pOffset.left;
-        if (pWidth / 2 > x) {
+        if (pWidth / 2 - 60 > x) {
           gwd.actions.gwdSwipegallery.goBackwards('gwd-swipegallery_1');
           if (currentDot.prev().length > 0) {
              currentDot.find('span').finish();
@@ -520,7 +520,7 @@
             currentDot.nextAll().removeClass('viewed');
             clearTimeFunc()
           }
-        } else {
+        } else if (pWidth / 2 + 60 < x) {
           gwd.actions.gwdSwipegallery.goForwards('gwd-swipegallery_1');
           if (currentDot.next().length > 0) {
              currentDot.find('span').finish();

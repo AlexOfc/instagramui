@@ -1,0 +1,278 @@
+#adnboost-tab .nav {
+    height: 1px;
+    width: 100%;
+  }
+  #adnboost-tab .nav-pills {
+    display: flex;
+    width: 98%;
+    table-layout: fixed;
+    margin: 8px auto 10px;
+  }
+  #adnboost-tab .nav > li > a {
+    font-size: 2px;
+    text-align: center;
+    padding: 1px;
+  }
+  #adnboost-tab .tab-content {
+    color: rgb(0, 0, 0);
+    position: absolute;
+    top: 0px;
+    z-index: -1;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #adnboost-tab .tab-content .owl-dots {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    left: 0;
+    padding: 0 8px;
+    display: flex;
+  }
+  #adnboost-tab .tab-content .owl-dots .owl-dot span {
+    font-size: 2px;
+    text-align: center;
+    padding: 1px;
+  }
+  #adnboost-tab .tab-content .owl-dots .owl-dot.active span,
+  #adnboost-tab .tab-content .owl-dots .owl-dot.viewed span {
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  #adnboost-tab .tab-content .owl-dots .owl-dot.active span {
+    width: 1%;
+  }
+  #adnboost-tab .tab-content .owl-dots .owl-dot.viewed span {
+    width: 100%;
+  }
+  #adnboost-tab .tab-content .owl-dots .owl-dot {
+    float: none;
+    border-radius: 2px;
+    width: 100%;
+    margin: 2px;
+    height: 2px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.35);
+    outline: none;
+  }
+  #adnboost-tab .tab-content .owl-dots .owl-dot:first-of-type {
+    margin-left: 0px;
+  }
+  #adnboost-tab .tab-content .owl-dots .owl-dot:last-of-type {
+    margin-right: 0px;
+  }
+  .content-item {
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+  }
+  .story {
+    position: relative;
+    padding: 15px 12px;
+    max-width: 85px;
+    text-align: center;
+  }
+  .story img {
+    border-radius: 50%;
+    width: 61px !important;
+    position: relative;
+    top: -3px;
+  }
+  .story svg {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 3px;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+   
+  }
+  .story.not-viewed svg {
+    stroke: rgb(138, 58, 184);
+    animation: 3500ms ease-in-out 0s 2 alternate none running loading;
+  }
+  .story-user {
+    text-align: center;
+    line-height: 1;
+  }
+  .story-line-cont {
+    width: 100%;
+    overflow-x: auto
+  }
+  .story-line {
+    display: flex;
+  }
+  @media screen and (min-width: 350px) {
+    .story-line {
+      justify-content: center;
+    }
+  }
+  @keyframes loading {
+    100% {
+      stroke: rgb(205, 71, 107);
+      stroke-dasharray: 10;
+      transform: rotate(200deg);
+    }
+  }
+  .tab-content > .active {
+    text-align: center;
+    position: relative;
+  }
+  .tab-content > .active > gwd-video {
+    width: auto;
+    height: auto;
+    top: 0px;
+    left: 0px;
+    position: relative;
+  }
+  #expanded-page .gwd-page-content {
+    background: rgb(38, 38, 38);
+  }
+  #expanded-page .owl-stage-outer,
+  #expanded-page .owl-stage,
+  #expanded-page .owl-item {
+    height: 100%;
+  }
+  #expanded-page .owl-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .user-icon-tab {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 24px;
+    padding-left: 5px;
+    z-index: 1;
+  }
+  .user-icon-tab img {
+    max-width: 24px;
+    border-radius: 50%;
+  }
+  .user-name {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    padding-left: 5px;
+  }
+  .user-name .time-before {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    opacity: 0.6;
+    padding-left: 10px;
+    color: rgb(255, 255, 255);
+  }
+  .pl-8 {
+    padding-left: 8px !important;
+  }
+  .pr-8 {
+    padding-right: 8px !important;
+  }
+  .see-more {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(50px);
+    opacity: 0;
+    color: #fff;
+    text-align: center;
+    transition: all .9s ease-in-out;
+  }
+  .see-more.active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .see-more-icon {
+    width: 20px;
+    margin: 0 auto;
+  }
+  .tab-content .owl-nav {
+    position: absolute;
+    z-index: -1;
+    visibility: hidden;
+  }
+  .owl-item > gwd-gesture {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  gwd-gallerynavigation {
+    position: absolute!important;
+    height: 4px!important;
+    bottom: 0!important;
+    width: 100%!important;
+    top: 11px!important;
+    bottom: auto
+  }
+  gwd-swipegallery>.matte {
+    height: 100%!important;
+  }
+  gwd-swipegallery>.matte>.container{
+    height: 100%;
+    width: 100%;
+    background: #292929!important;
+  }
+  gwd-swipegallery>.matte>.container>div{
+    width: 100%!important;
+    height: 100%!important;
+  }
+  gwd-gallerynavigation .button-container {
+    display: flex!important;
+    justify-content: center;
+    padding: 0 8px;
+    z-index: 6;
+  }
+  gwd-gallerynavigation .button-container .button {
+    width: 100%;
+    margin: 2px;
+    background: rgba(255, 255, 255, 0.35);
+    opacity: 1!important;
+    transition: none!important;
+    height: 2px!important;
+  }
+  gwd-gallerynavigation .button-container .button:first-of-type {
+    margin-left: 0px;
+  }
+  gwd-gallerynavigation .button-container .button:last-of-type {
+    margin-right: 0px;
+  }
+  #gwd-swipegallery_1 gwd-gallerynavigation .button-container .button .frame-dot {
+    display: block;
+    width: 1%;
+    height: 2px;
+    margin: 0px;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+    transition: none;
+  }
+  #gwd-swipegallery_1 gwd-gallerynavigation .button-container .button.active .frame-dot {
+    background-color: rgba(255, 255, 255, 1)!important;
+  }
+  #gwd-swipegallery_1 gwd-gallerynavigation .button-container .button.viewed .frame-dot {
+    background-color: rgba(255, 255, 255, 1)!important;
+    width: 100%;
+  }
+  gwd-swipegallery.has-navigation>.gesture {
+    bottom: 0!important;
+  }

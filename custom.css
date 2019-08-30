@@ -82,6 +82,7 @@
     padding: 15px 12px;
     max-width: 85px;
     text-align: center;
+    display: inline-block;
   }
   .story img {
     border-radius: 50%;
@@ -114,12 +115,7 @@
     overflow-x: auto
   }
   .story-line {
-    display: flex;
-  }
-  @media screen and (min-width: 350px) {
-    .story-line {
-      justify-content: center;
-    }
+    text-align: center;
   }
   @keyframes loading {
     100% {

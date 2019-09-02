@@ -66,6 +66,15 @@
       width: 100%;
       height: 100%;
     }
+    .close-button {
+      position: absolute;
+      right: 15px;
+      top: 30px;
+      max-width: 20px;
+    }
+    .close-button img {
+      width: 100%;
+    }
     .gwd-p-oyb6 {
       position: absolute;
       width: 229px;
@@ -394,6 +403,7 @@
     gwd.actions.events.registerEventHandlers = function(event) {
       gwd.actions.events.addHandler('expand-button', 'action', gwd.handleExpand_buttonAction, false);
       gwd.actions.events.addHandler('close-button', 'action', gwd.handleClose_buttonAction, false);
+      gwd.actions.events.addHandler('gwd-gesture_1', 'swipeup', gwd.auto_Gwd_gesture_1Swipedown, false);
       gwd.actions.events.addHandler('gwd-swipegallery_1', 'frameshown', gwd.auto_Gwd_swipegallery_1Frameshown, false);
       gwd.actions.events.addHandler('gwd-swipegallery_1', 'frametap', gwd.auto_Gwd_swipegallery_1Frametap, false);
       gwd.actions.events.addHandler('gwd-swipegallery_1', 'frameactivated', gwd.auto_Gwd_swipegallery_1Frameactivated, false);
@@ -406,6 +416,7 @@
     gwd.actions.events.deregisterEventHandlers = function(event) {
       gwd.actions.events.removeHandler('expand-button', 'action', gwd.handleExpand_buttonAction, false);
       gwd.actions.events.removeHandler('close-button', 'action', gwd.handleClose_buttonAction, false);
+      gwd.actions.events.removeHandler('gwd-gesture_1', 'swipeup', gwd.auto_Gwd_gesture_1Swipedown, false);
       gwd.actions.events.removeHandler('gwd-swipegallery_1', 'frameshown', gwd.auto_Gwd_swipegallery_1Frameshown, false);
       gwd.actions.events.removeHandler('gwd-swipegallery_1', 'frametap', gwd.auto_Gwd_swipegallery_1Frametap, false);
       gwd.actions.events.removeHandler('gwd-swipegallery_1', 'frameactivated', gwd.auto_Gwd_swipegallery_1Frameactivated, false);
@@ -503,6 +514,10 @@
       var currentDot = null;
       clearTimeFunc()
     };
+    gwd.auto_Gwd_gesture_1Swipedown = function(event) {
+      // GWD Predefined Function
+      gwd.actions.gwdPagedeck.goToPage('pagedeck', 'banner-page', 'none', 1000, 'linear', 'top');
+    };
     $('#gwd-swipegallery_1').on('click', function(e) {
       if (!$(e.target).hasClass('frame-dot')
       && !$(e.target).hasClass('button')) {
@@ -586,7 +601,7 @@
           window.location.href = $('gwd-swipegallery>.matte>.container>div:eq(' + currentDot.index() + ')').find('.content-item').attr('data-link');
         }
       })
-      alert('1')
+      $('gwd-gallerynavigation .button-container .button:eq(' + userIndex + ')').click();
     };
     gwd.auto_Gwd_taparea_2Action = function(event) {
       // GWD Predefined Function

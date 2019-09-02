@@ -337,7 +337,7 @@
         <div class="gwd-page-content banner">
           <div class="story-line-cont">
             <div class="story-line">
-              <div class="story not-viewed">
+              <div class="story not-viewed" data-viewed="true">
                 <gwd-taparea id="expand-button" class="expand-button gwd-gen-1qtmgwdanimation">
                   <img src="p1.png"/>
                   <svg viewBox="0 0 100 100">
@@ -346,7 +346,7 @@
                   <div class="story-user">John</div>
                 </gwd-taparea>
               </div>
-              <div class="story not-viewed">
+              <div class="story not-viewed" data-viewed="true">
                 <gwd-taparea id="gwd-taparea_1" class="gwd-taparea-1p7a">
                   <img src="ferd.jpg"/>
                   <svg viewBox="0 0 100 100">
@@ -355,7 +355,7 @@
                   <div class="story-user">Fred</div>
                 </gwd-taparea>
               </div>
-              <div class="story not-viewed">
+              <div class="story not-viewed" data-viewed="true">
                   <gwd-taparea id="gwd-taparea_2" class="gwd-taparea-1scy">
                     <img src="axel.jpg"/>
                 <svg viewBox="0 0 100 100">
@@ -364,7 +364,7 @@
                 <div class="story-user">Axel</div>
                 </gwd-taparea>
               </div>
-              <div class="story not-viewed">
+              <div class="story not-viewed" data-viewed="true">
                   <gwd-taparea id="gwd-taparea_3" class="gwd-taparea-2m0v">
                   <img src="kyle.jpeg"/>
                   <svg viewBox="0 0 100 100">
@@ -483,12 +483,21 @@
       userstory = $('#adnboost-tab .user-icon-tab .user-name .name-cont');
       username = elem.find('.story-user').text();
       avatar = elem.find('img').attr('src');
-      $('.user-icon-tab').find('img').remove();
-      $('.user-icon-tab').prepend('<img src="' + avatar + '"/>');
+      var userIconTab = $('.user-icon-tab')
+      userIconTab.find('img').remove();
+      userIconTab.prepend('<img src="' + avatar + '"/>');
       userstory.text(username);
       gwd.actions.gwdSwipegallery.goToFrame('gwd-swipegallery_1', i + 1, 'none');
       userIndex = i;
-      $('gwd-gallerynavigation .button-container .button:eq(' + userIndex + ')').click();
+      if ($('.story:eq('+userIndex+')').attr('data-viewed') === "true") {
+        currentDot = $('gwd-gallerynavigation .button-container .button.active');
+        currentDot.prevAll().addClass('viewed');
+        var elem = $('gwd-swipegallery>.matte>.container>div:eq(' + currentDot.index() + ')');
+        progress(elem.find('.content-item').attr('data-tab-duration') * 1000, currentDot);
+      } else {
+        $('.story').attr('data-viewed', false);
+        $('.story:eq('+userIndex+')').attr('data-viewed', true);
+      }
     }
 
     var currentDot = $('gwd-gallerynavigation .button-container .button').first();
@@ -500,7 +509,10 @@
     };
     gwd.handleClose_buttonAction = function() {
       // GWD Predefined Function
+      
       gwd.actions.gwdGenericad.goToPage('gwd-ad', 'banner-page');
+      var currentDot = null;
+      clearTimeFunc()
     };
     gwd.auto_Gwd_gesture_1Swipedown = function(event) {
       // GWD Predefined Function
@@ -515,7 +527,7 @@
         if (pWidth / 2 - 60 > x) {
           gwd.actions.gwdSwipegallery.goBackwards('gwd-swipegallery_1');
           if (currentDot.prev().length > 0) {
-             currentDot.find('span').finish();
+            currentDot.find('span').finish();
             currentDot = currentDot.prev();
             currentDot.nextAll().removeClass('viewed');
             clearTimeFunc()
@@ -552,15 +564,14 @@
       $('gwd-swipegallery>.matte>.container>div').find('.see-more').removeClass('active');
       currentDot.find('span').finish();
       currentDot = $('gwd-gallerynavigation .button-container .button:eq(' + index + ')');
-      currentDot.find('span').css({
-        width: '1%'
-      });
-      currentDot.prevAll().addClass('viewed');
-      currentDot.prevAll().find('span').removeAttr("style");
+      currentDot.find('span').css({ width: '1%' });
+      currentDot.prevAll().addClass('viewed').find('span').removeAttr("style");
       currentDot.nextAll().removeClass('viewed');
+      var userelem = $('.story-line .story:eq('+currentDot.index()+')');
+      $('.story').attr('data-viewed', false);
+      userelem.attr('data-viewed', true);
       var elem = $('gwd-swipegallery>.matte>.container>div:eq(' + currentDot.index() + ')');
       elem.find('.see-more').addClass('active');
-      var userelem = $('.story-line .story:eq('+currentDot.index()+')');
       username = userelem.find('.story-user').text();
       avatar = userelem.find('img').attr('src');
       $('.user-icon-tab').find('img').remove();

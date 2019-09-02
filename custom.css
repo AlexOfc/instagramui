@@ -99,7 +99,7 @@
     top: 0px;
     left: 0px;
     position: absolute;
-   
+   width: 100%;
   }
   .story.not-viewed svg {
     stroke: rgb(138, 58, 184);

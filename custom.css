@@ -77,6 +77,16 @@
     align-items: center;
     justify-content: center;
   }
+  .close-button {
+    max-width: 40px!important;
+    width: 40px;
+    height: 40px;
+    right: 0!important;
+    text-align: center;
+  }
+  .close-button .intermediate-element {
+    max-width: 20px;
+  }
   .story {
     position: relative;
     padding: 15px 12px;

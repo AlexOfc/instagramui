@@ -604,7 +604,7 @@
         var pOffset = $(this).offset();
         var x = e.pageX - pOffset.left;
         if ((pHeight - e.pageY < 70) && (pWidth / 2 - 60 < x && x < pWidth / 2 + 60)) {
-          gwd.actions.gwdGenericad.exit('gwd-ad', APPNEXUS.getClickTag(), true, 'page1');
+          gwd.actions.gwdGenericad.exit('gwd-ad', $('gwd-swipegallery>.matte>.container>div:eq(' + currentDot.index() + ')').find('.content-item').attr('data-link'), true, 'page1');
         } else if (pWidth / 2 - 60 > x) {
           gwd.actions.gwdSwipegallery.goBackwards('gwd-swipegallery_1');
           if (currentDot.prev().length > 0) {
@@ -667,7 +667,7 @@
       })
       $('gwd-gesture').on('touchend', function(ev) {
         if (movingTop) {
-          gwd.actions.gwdGenericad.exit('gwd-ad', APPNEXUS.getClickTag(), true, 'page1');
+          gwd.actions.gwdGenericad.exit('gwd-ad', $('gwd-swipegallery>.matte>.container>div:eq(' + currentDot.index() + ')').find('.content-item').attr('data-link'), true, 'page1');
         }
       })
     };
